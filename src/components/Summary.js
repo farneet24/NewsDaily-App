@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
 
 const Summary = ({ articleText }) => {
   const commentsDiv = useRef(null);
@@ -24,35 +23,38 @@ const Summary = ({ articleText }) => {
   };
 
   const handleSummarize = async () => {
-    // console.log(commentStrings);
     setShouldDisplaySummarization(true);
-    // return;
+    
     const sendData = async () => {
       try {
-        const response = await axios.post(
+        const response = await fetch(
           "https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/storeComments/",
           {
-            articleText: articleText,
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ articleText: articleText }),
           }
         );
-
-        console.log("Response:", response.data);
-        const { sessionId } = response.data;
-
+  
+        const data = await response.json();
+        console.log("Response:", data);
+        const { sessionId } = data;
+  
         const source = new EventSource(
           `https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/stream/${sessionId}/`
         );
-
-        // commentsDiv.current.innerHTML = "<br/><h1>Summarization</h1><br/>";
-        // Check for duplicate session IDs
+  
         if (openedSessions.has(sessionId)) {
           console.log("Duplicate session ID. Closing source.");
           source && source.close();
           return;
         }
-
-        openedSessions.add(sessionId); // Add to the set of opened sessions
+  
+        openedSessions.add(sessionId);
         commentsDiv.current.innerHTML = "";
+  
         source.onmessage = (event) => {
           displaySummary(event.data);
           if (commentsDiv.current) {
@@ -60,14 +62,12 @@ const Summary = ({ articleText }) => {
               commentsDiv.current.textContent || commentsDiv.current.innerText;
             const words = textContent.split(/\s+/).filter(Boolean);
             if (words.length >= 1000) {
-              source.close(); // Close the source if words exceed 1000
-              displaySummary(
-                "<span>Word limit reached. Closing stream...</span>"
-              );
+              source.close();
+              displaySummary("<span>Word limit reached. Closing stream...</span>");
             }
           }
         };
-
+  
         source.addEventListener(
           "done",
           () => {
@@ -75,49 +75,57 @@ const Summary = ({ articleText }) => {
           },
           false
         );
-
+  
         source.onerror = (event) => {
           console.error("EventSource failed:", event);
           source.close();
           displaySummary("<span>Error occurred while fetching data.</span>");
         };
+        
       } catch (error) {
         console.error("There was an error sending the data", error);
       }
     };
-
+  
     sendData();
   };
+  
 
   const handleKeywords = async () => {
-    // console.log(commentStrings);
+    // Existing logic...
     setShouldDisplayKeyword(true);
+  
     const sendData = async () => {
       try {
-        const response = await axios.post(
+        const response = await fetch(
           "https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/storeComments/",
           {
-            articleText: articleText,
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ articleText: articleText }),
           }
         );
-
-        console.log("Response:", response.data);
-        const { sessionId } = response.data;
-
+  
+        const data = await response.json();
+        console.log("Response:", data);
+        const { sessionId } = data;
+  
         const source = new EventSource(
           `https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/stream/${sessionId}/keywords/`
         );
-
+  
         // Check for duplicate session IDs
         if (openedSessions.has(sessionId)) {
           console.log("Duplicate session ID. Closing source.");
           source && source.close();
           return;
         }
-        // commentsDiv.current.innerHTML = "<br/><h1>Summarization</h1><br/>";
+  
         openedSessions.add(sessionId); // Add to the set of opened sessions
         commentsKey.current.innerHTML = "";
-
+  
         source.onmessage = (event) => {
           displayKeyword(event.data);
           if (commentsKey.current) {
@@ -126,13 +134,11 @@ const Summary = ({ articleText }) => {
             const words = textContent.split(/\s+/).filter(Boolean);
             if (words.length >= 1000) {
               source.close(); // Close the source if words exceed 1000
-              displayKeyword(
-                "<span>Word limit reached. Closing stream...</span>"
-              );
+              displayKeyword("<span>Word limit reached. Closing stream...</span>");
             }
           }
         };
-
+  
         source.addEventListener(
           "done",
           () => {
@@ -141,19 +147,21 @@ const Summary = ({ articleText }) => {
           },
           false
         );
-
+  
         source.onerror = (event) => {
           console.error("EventSource failed:", event);
           source.close();
           displayKeyword("<span>Error occurred while fetching data.</span>");
         };
+  
       } catch (error) {
         console.error("There was an error sending the data", error);
       }
     };
-
+  
     sendData();
   };
+  
 
   useEffect(() => {
     if (!articleText) {
@@ -164,7 +172,7 @@ const Summary = ({ articleText }) => {
     console.log("I am running");
     handleSummarize();
     console.log("I am running after summary");
-    handleKeywords();
+    // handleKeywords();
   }, [articleText]);
 
   return (
@@ -249,5 +257,7 @@ Summary.propTypes = {
 };
 
 export default Summary;
+
+
 
 
