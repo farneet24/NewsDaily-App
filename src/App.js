@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import SignUpForm from "./components/SignUp";
 import LoginPage from "./components/Login";
@@ -60,53 +59,79 @@ function App() {
   const handleSignup = () => {
     console.log(FormData);
 
-    axios.post("https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/signup/", formData).then((response) => {
-      if (response.data.status === "success") {
-        setIsAuthenticated(true);
-        setFirstName(formData.first_name);
-        // Save to localStorage
-        localStorage.setItem("isAuthenticated", "true");
-        localStorage.setItem("firstName", formData.first_name);
-        resetFormDataSignUp();
-      }
-    });
+    fetch("https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/signup/", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "success") {
+          setIsAuthenticated(true);
+          setFirstName(formData.first_name);
+          localStorage.setItem("isAuthenticated", "true");
+          localStorage.setItem("firstName", formData.first_name);
+          resetFormDataSignUp();
+        }
+      })
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
+      });
   };
 
   const handleLogin = () => {
-    console.log(FormData);
+    console.log(formData); // Make sure you've spelled this correctly. JavaScript is case-sensitive.
     const { username, password } = formData;
 
-    axios
-      .post("https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/login/", { username, password })
-      .then((response) => {
-        console.log(response);
+    fetch("https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/login/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
 
-        if (response.data.status === "success") {
+        if (data.status === "success") {
           setIsAuthenticated(true);
-          setFirstName(response.data.first_name); // Assuming the server returns the first_name in the response
-          setSuccessMessage("Logged Out successfully!");
+          setFirstName(data.first_name); // Assuming the server returns the first_name in the response
+          setSuccessMessage("Logged in successfully!");
           setErrorMessage("");
           // Save to localStorage
           localStorage.setItem("isAuthenticated", "true");
-          localStorage.setItem("firstName", response.data.first_name);
+          localStorage.setItem("firstName", data.first_name);
           resetFormDataLog();
-        } else if (response.data.status === "failure") {
+        } else if (data.status === "failure") {
           setErrorMessage("Invalid credentials");
           setSuccessMessage("");
         }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setErrorMessage("An error occurred");
+        setSuccessMessage("");
       });
   };
 
   const handleLogout = () => {
-    axios.get("https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/logout/").then((response) => {
-      if (response.data.status === "logged out") {
-        setIsAuthenticated(false);
-        // Remove from localStorage
-        localStorage.removeItem("isAuthenticated");
-        localStorage.removeItem("firstName");
-        resetFormDataLog();
-      }
-    });
+    fetch("https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/logout/")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "logged out") {
+          setIsAuthenticated(false);
+          // Remove from localStorage
+          localStorage.removeItem("isAuthenticated");
+          localStorage.removeItem("firstName");
+          resetFormDataLog();
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   // Inside your main function or useEffect to check local storage on component load
@@ -146,3 +171,4 @@ function App() {
 }
 
 export default App;
+
