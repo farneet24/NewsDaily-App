@@ -5,9 +5,494 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #080202;
+  color: white;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Recommender Card */
+#recommend-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.recommend-heading {
+  font-size: 2em;
+  color: #47A992;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+
+.keyword-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.keyword-card {
+  width: 90%;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.keyword-card:hover {
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+/* Card Styles */
+.keyword-card:hover .keyword-link-title {
+  color: #A6D1E6;  /* Title changes color to #A6D1E6 when the card is hovered */
+}
+
+.keyword-link-title {
+  font-size: 1.4em;
+  color: #537188;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  transition: color 0.3s ease;
+}
+
+.keyword-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, rgba(20,147,206,1) 0%, rgba(0,123,255,1) 100%);
+  color: white;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0px 5px 10px rgba(0,123,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.keyword-link:hover {
+  background: linear-gradient(90deg, rgba(0,123,255,1) 0%, rgba(20,147,206,1) 100%);
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+
+.keyword-snippet {
+  margin-top: 15px;
+  color: #EEEDED;
+}
+
+.keyword-loading {
+  color: gray;
+  font-style: italic;
+}
+
+
+
+/* Spinner CSS */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh; /* 100% of the viewport height */
+  width: 100vw; /* 100% of the viewport width */
+}
+
+/* APP NAVIGATION BAR */
+.navbar-dark .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-dark .navbar-toggler-icon {
+  background-color: #212529;
+}
+
+.navbar-dark .navbar-collapse {
+  background-color: #212529;  /* You can set this to match your dark theme */
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-dark .navbar-nav .nav-link.active, 
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #fff;
+}
+/* This styles the search input in the collapsed dropdown */
+.navbar-dark .navbar-collapse .d-flex input[type="search"] {
+  background-color: #343a40;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+/* This styles the placeholder text color */
+.navbar-dark .navbar-collapse .d-flex input[type="search"]::placeholder {
+  color: white;
+  opacity: 0.7; /* You can adjust the opacity if you like */
+}
+
+/* For small screens */
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 5px 5px;
+  }
+
+  .search-input {
+    margin-bottom: 0.5rem;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+}
+
+/* For larger screens */
+@media (min-width: 769px) {
+  .search-form {
+    flex-direction: row;
+  }
+}
+
+
+/* Alert Button */
+.message {
+  padding: 1em;
+  margin-top: 1em;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.message span {
+  font-weight: bold;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+
+/* Card */
+.card {
+  background-color: #333; /* Dark gray background */
+  color: #fff; /* White text */
+}
+
+.card-title {
+  color: #ddd; /* Dark white color */
+  font-size: 1.25rem; /* Adjust as needed */
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Primary button color */
+}
+
+.text-muted {
+  color: #aaa !important; /* Light gray text */
+}
+
+
+#newscardtext{
+  padding: 30px 10px 20px 10px;
+}
+
+.card-text {
+  font-size: 1rem; /* Adjust as needed */
+}
+.card {
+  margin: 0px 2% 0px 2%;
+  padding-right: 2%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.fixed-size-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+#readmorebutton{
+  padding-top: 7%;
+}
+
+@media (max-width : 992px){
+  #readmorebutton{
+    padding-top: 10%;
+  }
+}
+
+@media (max-width : 768px){
+  #readmorebutton{
+    padding-top: 12%;
+  }
+}
+
+@media (max-width : 770px){
+  #readmorebutton{
+    padding-top: 4%;
+    padding-left: 2%;
+    padding-bottom: 2%;
+  }
+}
+
+@media (max-width : 480px){
+  #readmorebutton{
+    padding-top: 4%;
+    padding-left: 2%;
+    padding-bottom: 2%;
+  }
+}
+
+.btn-primary {
+  min-width: 120px; /* Adjust as needed */
+  max-width: 200px; /* Adjust as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* Initial State */
+  background: transparent;
+  border: 2px solid rgba(63, 94, 251, 1);
+  color: rgba(63, 94, 251, 1);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+
+  /* Transition */
+  transition-property: background, border, color, box-shadow, transform;
+  transition-duration: 0.4s, 0.4s, 0.4s, 0.4s, 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+  border: none;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Media query to make the image full-width on small screens */
+@media (max-width: 767px) {
+  .card{
+    margin: 0 5%;
+    padding: 0 0 10px 0;
+  }
+  .fixed-size-img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+/* Navbar of Login and SignUp page */
+.navbar {
+  color: white;
+  height: 60px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 50px auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 0px 0px 0px;
+}
+
+.footerFlexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.logoSvg {
+  font-size: 24px;
+  color: white;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 8px 0px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  width: 110px;  /* Adjust the width as needed */
+  height: 100%; /* Adjust the height as needed */
+}
+
+/* SIGN UP PAGE CSS */
+.formHeader , .input-label{
+  color: white;
+}
+
+.grey-text {
+  color: #777;
+}
+
+/* Default padding for larger screens */
+.shortPageWrapper {
+  padding-left: 34%;
+  padding-right: 8%;
+}
+
+.formWrapper{
+  padding-top: 10%;
+}
+
+/* Media query for screens smaller than 1200px */
+@media (max-width: 1200px) {
+  .shortPageWrapper {
+    padding-left: 34%;
+    padding-right: 8%;
+  }
+  .formWrapper{
+    padding-top: 20%;
+  }
+}
+
+/* Media query for screens smaller than 992px */
+@media (max-width: 992px) {
+  .shortPageWrapper {
+    padding-left: 34%;
+    padding-right: 8%;
+  }
+  .formWrapper{
+    padding-top: 20%;
+  }
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 768px) {
+  .shortPageWrapper {
+    padding-left: 17%;
+    padding-right: 8%;
+  }
+  .formWrapper{
+    padding-top: 20%;
+  }
+}
+
+/* Media query for screens smaller than 576px */
+@media (max-width: 576px) {
+  .shortPageWrapper {
+    padding-left: 17%;
+    padding-right: 8%;
+  }
+
+  .formWrapper{
+    padding-top: 20%;
+  }
+}
+
+/* Media query for screens smaller than 480px */
+@media (max-width: 480px) {
+  .shortPageWrapper {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+  
+  .formWrapper{
+    padding-top: 25%;
+  }
+  
+}
+
+
+/* Customize the scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+
+/* Style the handle (thumb) */
+::-webkit-scrollbar-thumb {
+  background-color: #333; /* Dark color for the thumb */
+  border-radius: 4px; /* Rounded corners for the thumb */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+li::marker {
+  content: "";
+}
+
+.content{
+  margin: 0;
+  padding: 0;
+}
+
+ /* For light mode */
+ .form-control::placeholder {
+  color: #666; /* or any color that suits the light background */
+  opacity: 0.8; /* Firefox */
+}
+
+#subject::placeholder {
+  color: #567189;
+  font-size: 16px;
+}
+
+#message::placeholder {
+  color: #567189;
+  font-size: 16px;
+}
+
+#email::placeholder {
+  color: #567189;
+  font-size: 16px;
+}
+
+#name::placeholder {
+  color: #567189;
+  font-size: 16px;
+}
+
+#con{
+  margin: 0px 0px 0px 0px;
+  padding: 0% 5%;
+}
+
+.vertical-section{
+  width: 100%;
+}
+
+.boc{
+  padding: 0% 10%;
 }

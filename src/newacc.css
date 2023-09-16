@@ -1,0 +1,107 @@
+.accordion-new .accordion-new-item {
+  border-bottom: 0.05px solid #202324;
+}
+
+.accordion-new .accordion-new-item button[aria-expanded="true"] {
+  border-bottom: 1px solid #03b5d2;
+}
+
+.accordion-new button {
+  position: relative;
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: 1em 0;
+  color: #aba499;
+  font-size: 1.15rem;
+  font-weight: 400;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.accordion-new button:hover,
+.accordion-new button:focus {
+  cursor: pointer;
+  color: #03b5d2;
+}
+
+.accordion-new button:hover::after,
+.accordion-new button:focus::after {
+  cursor: pointer;
+  color: #03b5d2;
+  border: 1px solid #03b5d2;
+}
+
+.accordion-new button .accordion-new-title {
+  padding: 1em 1.5em 1em 0;
+}
+
+.accordion-new button .icon {
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  /* border: 1px solid; */
+  border-radius: 22px;
+}
+
+.accordion-new button .icon::before {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 9px;
+  left: 5px;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+}
+.accordion-new button .icon::after {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 5px;
+  left: 9px;
+  width: 2px;
+  height: 10px;
+  background: currentColor;
+}
+
+.accordion-new button[aria-expanded="true"] {
+  color: #03b5d2;
+}
+.accordion-new button[aria-expanded="true"] .icon::after {
+  width: 0;
+}
+.accordion-new button[aria-expanded="true"] + .accordion-new-content {
+  opacity: 1;
+  max-height: fit-content;
+  transition: all 200ms linear;
+  will-change: opacity, max-height;
+}
+.accordion-new .accordion-new-content {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 200ms linear, max-height 200ms linear;
+  will-change: opacity, max-height;
+}
+.accordion-new .accordion-new-content p {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 2em 0;
+}
+
+@media (max-width: 768px) {
+  .accordion-new-item {
+    padding: 10px;
+  }
+  .accordion-new-title {
+    font-size: 1.2rem;
+  }
+  .icon {
+    right: 10px;
+  }
+}
