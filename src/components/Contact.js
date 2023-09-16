@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -20,10 +19,20 @@ function Contact() {
   });
 
   const handleSubmit = (e) => {
+    // Prevent the default behavior of form submission
+    e.preventDefault();
+  
     // Make a POST request to Formspree with the form data
-    axios
-      .post("https://formspree.io/f/mrgvyjrd", formData)
-      .then(() => {
+    fetch("https://formspree.io/f/mrgvyjrd", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
         // Reset the form data
         setFormData({
           name: "",
@@ -33,9 +42,10 @@ function Contact() {
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Error:", error);
       });
   };
+  
 
   const handleChange = (e) => {
     setFormData({
