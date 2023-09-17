@@ -99,8 +99,6 @@ function App() {
         if (data.status === "success") {
           setIsAuthenticated(true);
           setFirstName(data.first_name); // Assuming the server returns the first_name in the response
-          setSuccessMessage("Logged in successfully!");
-          setErrorMessage("");
           // Save to localStorage
           localStorage.setItem("isAuthenticated", "true");
           localStorage.setItem("firstName", data.first_name);
@@ -126,6 +124,8 @@ function App() {
           // Remove from localStorage
           localStorage.removeItem("isAuthenticated");
           localStorage.removeItem("firstName");
+          setSuccessMessage("Logged out successfully!");
+          setErrorMessage("");
           resetFormDataLog();
         }
       })
