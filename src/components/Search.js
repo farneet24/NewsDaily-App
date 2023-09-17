@@ -22,30 +22,41 @@ const Search = ({ country, pageSize, category, apikey, setProgress }) => {
   const [totalResults, setTotalResults] = useState(0);
   const [loading, setLoading] = useState(false);
   const [hasFetchedInitialData, setHasFetchedInitialData] = useState(false);
+  const [showNum, setshowNum] = useState(0);
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query");
 
   const fetchData = async (pageNum) => {
     setLoading(true);
-    let url = "";
-    if (query) {
-      url = `https://newsapi.org/v2/everything?q=${query}&apiKey=${apikey}&page=${pageNum}&pagesize=${100}&language=en`;
-    } else {
-      return;
-    }
+    // Construct the query object
+    const queryObj = {
+      $query: {
+        $and: [
+          { keyword: query }, // your category variable
+          { lang: "eng" },
+        ],
+      },
+    };
+
+    // Convert the query object to a query string
+    const queryString = encodeURIComponent(JSON.stringify(queryObj));
+
+    // Construct the URL
+    const url = `https://eventregistry.org/api/v1/article/getArticles?query=${queryString}&dataType=news&resultType=articles&articlesPage=${pageNum}&articlesCount=${100}&includeArticleImage=true&includeArticleConcepts=true&articlesSortBy=rel&apiKey=ef5627ca-d6b6-4b3e-8c05-46c5daeb6786`;
+
     const data = await fetch(url);
     const parsedData = await data.json();
-
-    if (parsedData.articles && Array.isArray(parsedData.articles)) {
-      setArticles((prevArticles) => [...prevArticles, ...parsedData.articles]);
-      setTotalResults(parsedData.totalResults);
+    console.log('Parsed Data ', parsedData)
+    if (parsedData.articles && Array.isArray(parsedData.articles.results)) {
+      setArticles((prevArticles) => [...prevArticles, ...parsedData.articles.results]);
+      setTotalResults(parsedData.articles.count); // Assuming 'count' holds the total number of articles
+      setshowNum((parsedData.articles.count) * (parsedData.articles.pages))
       setPage(pageNum + 1);
       if (!hasFetchedInitialData) {
         setHasFetchedInitialData(true);
       }
     } else {
       console.error("API did not return articles:", parsedData);
-      return;
     }
 
     setLoading(false);
@@ -79,7 +90,7 @@ const Search = ({ country, pageSize, category, apikey, setProgress }) => {
       {/* Display total results if available */}
       {totalResults > 0 && (
         <div className="container" style={totalResultsStyle}>
-          Found {totalResults} results
+          Found {showNum} results
         </div>
       )}
 
@@ -97,18 +108,25 @@ const Search = ({ country, pageSize, category, apikey, setProgress }) => {
           <div className="row">
             {articles.map((element, index) => (
               <div className="col-md-12" key={index}>
+                {" "}
+                {/* This change ensures each article takes up a full row */}
                 <NewsItem
                   title={element.title || "Title Not Available"}
                   description={
-                    element.description || "Description Not Available"
+                    // getFirstSentence(element.body) || "Description Not Available"
+                    element.body || "Description Not Available"
+
                   }
                   ImageURL={
-                    element.urlToImage ||
+                    element.image ||
                     "https://hesolutions.com.pk/wp-content/uploads/2019/01/picture-not-available.jpg"
                   }
                   NewsURL={element.url}
-                  author={element.author}
-                  date={element.publishedAt}
+                  author={element.authors}
+                  date={element.dateTime}
+                  dat={element}
+                  sourc={element.source}
+                  concepts={element.concepts}
                 />
               </div>
             ))}
