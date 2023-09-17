@@ -65,11 +65,7 @@ const News = ({ country, pageSize, category, apikey, setProgress }) => {
       fetchData(page);
     }
   };
-
-  function getFirstSentence(text) {
-    const matches = text.match(/(.*?[.!?])\s/);
-    return (matches && matches[1]) ? matches[1] : text;
-  }
+  
 
   return (
     <>
@@ -84,7 +80,7 @@ const News = ({ country, pageSize, category, apikey, setProgress }) => {
         loader={loading && <Spinner />}
       >
         <div className="container">
-          <div className="row">
+          <div className="row" id="newscard">
             {articles.map((element, index) => (
               <div className="col-md-12" key={index}>
                 {" "}
@@ -104,6 +100,8 @@ const News = ({ country, pageSize, category, apikey, setProgress }) => {
                   author={element.authors}
                   date={element.dateTime}
                   dat={element}
+                  sourc={element.source}
+                  concepts={element.concepts}
                 />
               </div>
             ))}
