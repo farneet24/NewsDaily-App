@@ -16,29 +16,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
   faCalendarAlt,
-  faComment,
 } from "@fortawesome/free-solid-svg-icons";
 import Summary from "./Summary";
 import Recommend from "./Recommend";
 
+// Truncate function
+const truncate = (str, n) =>
+  str.length > n ? str.substr(0, n - 1) + "..." : str;
+
 const ArticlePage = () => {
   const location = useLocation();
-  const { title, description, ImageURL, NewsURL, author, date } =
-    location.state || {
-      title: "Default Title",
-      description: "Default Description",
-    };
-  const [articleDetails, setArticleDetails] = useState(null);
-  console.log("The location", location.state);
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
-  const extractAuthorFromTitle = (title) => {
-    const lastHyphenIndex = title.lastIndexOf("-");
-    if (lastHyphenIndex !== -1) {
-      return title.slice(lastHyphenIndex + 1).trim();
-    }
-    return "Unknown";
+  const {
+    title,
+    description,
+    ImageURL,
+    NewsURL,
+    author,
+    date,
+    dat,
+    sourc,
+    concepts,
+  } = location.state || {
+    title: "Default Title",
+    description: "Default Description",
   };
+
+
+  const [articleDetails, setArticleDetails] = useState(null);
+  const [errorInarticle, seterrorInarticle] = useState(true);
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   const theme = createTheme({
     palette: {
@@ -46,7 +52,6 @@ const ArticlePage = () => {
     },
   });
 
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const timeAgo = (dateString) => {
     const now = new Date();
     const publishedDate = new Date(dateString);
@@ -119,13 +124,16 @@ const ArticlePage = () => {
         .then((data) => {
           // Do something with the data
           setArticleDetails(data);
+          console.log("Article Page", articleDetails);
         })
-        .catch((error) => console.error("Error:", error));
+        .catch((error) => {
+          console.error("Error:", error);
+          seterrorInarticle(false);
+        });
     }
   }, [NewsURL]);
 
-  console.log(articleDetails);
-
+  console.log(author);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -167,21 +175,10 @@ const ArticlePage = () => {
               {title}
             </Typography>
             <Divider style={{ margin: "1rem 0", backgroundColor: "#aaa" }} />
-            <Typography
-              variant="body1"
-              paragraph
-              style={{ fontStyle: "italic", color: "#a0a0a0" }}
-            >
-              <FontAwesomeIcon
-                icon={faComment}
-                style={{ marginRight: "10px" }}
-              />
-              {description}
-            </Typography>
             <Typography variant="body2" paragraph style={{ color: "#a0a0a0" }}>
               <FontAwesomeIcon icon={faUser} style={{ marginRight: "10px" }} />
               <strong>Author(s): </strong>
-              {author ? author : extractAuthorFromTitle(title)}
+              {sourc.title}
             </Typography>
             <Typography variant="body2" paragraph style={{ color: "#a0a0a0" }}>
               <FontAwesomeIcon
@@ -191,37 +188,27 @@ const ArticlePage = () => {
               <strong>Published: </strong>
               {formatDate(date)} ({timeAgo(date)})
             </Typography>
+
             {/* Summary */}
-            {articleDetails &&
-            articleDetails.text &&
-            articleDetails.text.trim() !== "" ? (
-              <Summary articleText={articleDetails.text} />
+            {description ? (
+              <Summary articleText={truncate(description, 2500)} />
             ) : null}
             <Divider style={{ margin: "1rem 0", backgroundColor: "#aaa" }} />
-            {articleDetails && (
-              <div>
-                {articleDetails.text && articleDetails.text.trim() !== "" ? (
-                  <Typography variant="body1" paragraph>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: articleDetails.text.replace(/\/n/g, "<br />"),
-                      }}
-                    ></div>
-                  </Typography>
-                ) : (
-                  <Typography variant="body1" paragraph>
-                    We are sorry. The article cannot be fetched.
-                  </Typography>
-                )}
-              </div>
-            )}
+            <Typography variant="body1" paragraph>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: description.replace(/\n/g, "<br />"), // Replace \n with <br />
+                }}
+              ></div>
+            </Typography>
 
             <br />
             {/* Recommend */}
-            {articleDetails &&
-            articleDetails.text &&
-            articleDetails.text.trim() !== "" ? (
-              <Recommend articleText={articleDetails.text} />
+            {description ? (
+              <Recommend
+                articleText={truncate(description, 1000)}
+                concepts={concepts}
+              />
             ) : null}
           </CardContent>
         </Card>
@@ -231,3 +218,4 @@ const ArticlePage = () => {
 };
 
 export default ArticlePage;
+
