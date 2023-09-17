@@ -183,8 +183,3 @@ const Recommend = ({ articleText, concepts }) => {
 
 export default Recommend;
 
-  
-};
-
-export default Recommend;
-
