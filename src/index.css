@@ -187,123 +187,6 @@ code {
   border: 1px solid #f5c6cb;
 }
 
-
-/* Card */
-.card {
-  background-color: #333; /* Dark gray background */
-  color: #fff; /* White text */
-}
-
-.card-title {
-  color: #ddd; /* Dark white color */
-  font-size: 1.25rem; /* Adjust as needed */
-  margin-bottom: 10px;
-}
-
-.btn-primary {
-  background-color: #007bff; /* Primary button color */
-}
-
-.text-muted {
-  color: #aaa !important; /* Light gray text */
-}
-
-
-#newscardtext{
-  padding: 30px 10px 20px 10px;
-}
-
-.card-text {
-  font-size: 1rem; /* Adjust as needed */
-}
-.card {
-  margin: 0px 2% 0px 2%;
-  padding-right: 2%;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.fixed-size-img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-}
-
-#readmorebutton{
-  padding-top: 7%;
-}
-
-@media (max-width : 992px){
-  #readmorebutton{
-    padding-top: 10%;
-  }
-}
-
-@media (max-width : 768px){
-  #readmorebutton{
-    padding-top: 12%;
-  }
-}
-
-@media (max-width : 770px){
-  #readmorebutton{
-    padding-top: 4%;
-    padding-left: 2%;
-    padding-bottom: 2%;
-  }
-}
-
-@media (max-width : 480px){
-  #readmorebutton{
-    padding-top: 4%;
-    padding-left: 2%;
-    padding-bottom: 2%;
-  }
-}
-
-.btn-primary {
-  min-width: 120px; /* Adjust as needed */
-  max-width: 200px; /* Adjust as needed */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  /* Initial State */
-  background: transparent;
-  border: 2px solid rgba(63, 94, 251, 1);
-  color: rgba(63, 94, 251, 1);
-  padding: 12px 24px;
-  border-radius: 50px;
-  font-weight: bold;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transform: translateY(0);
-
-  /* Transition */
-  transition-property: background, border, color, box-shadow, transform;
-  transition-duration: 0.4s, 0.4s, 0.4s, 0.4s, 0.3s;
-  transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
-}
-
-.btn-primary:hover {
-  background: linear-gradient(90deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-  border: none;
-  color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
-}
-
-/* Media query to make the image full-width on small screens */
-@media (max-width: 767px) {
-  .card{
-    margin: 0 5%;
-    padding: 0 0 10px 0;
-  }
-  .fixed-size-img {
-    width: 100%;
-    height: auto;
-  }
-}
-
-
 /* Navbar of Login and SignUp page */
 .navbar {
   color: white;
@@ -313,7 +196,7 @@ code {
 .container {
   max-width: 1200px;
   margin: 50px auto 0 auto;
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   align-items: center;
   padding: 0px 0px 0px 0px;
@@ -496,3 +379,133 @@ li::marker {
 .boc{
   padding: 0% 10%;
 }
+
+
+
+/* Card */
+.card {
+  background-color: #333; /* Dark gray background */
+  color: #fff; /* White text */
+}
+
+.card-title {
+  color: #ddd; /* Dark white color */
+  font-size: 1.25rem; /* Adjust as needed */
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Primary button color */
+}
+
+.text-muted {
+  color: #aaa !important; /* Light gray text */
+}
+
+
+#newscardtext{
+  padding: 30px 10px 20px 10px;
+}
+
+.card-text {
+  font-size: 1rem; /* Adjust as needed */
+}
+.card {
+  margin: 0px 2% 0px 2%;
+  padding-right: 2%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.fixed-size-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+#readmorebutton{
+  padding-top: 7%;
+}
+
+#newscard{
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+@media (max-width : 992px){
+  #readmorebutton{
+    padding-top: 10%;
+  }
+}
+
+@media (max-width : 768px){
+  #readmorebutton{
+    padding-top: 12%;
+  }
+}
+
+@media (max-width : 770px){
+  #readmorebutton{
+    padding-top: 4%;
+    padding-left: 2%;
+    padding-bottom: 2%;
+  }
+}
+
+@media (max-width : 480px){
+  .fixed-size-img {
+    width: 80%;
+    height: 50px;
+    object-fit: cover;
+  }
+
+  #readmorebutton{
+    padding-top: 4%;
+    padding-left: 2%;
+    padding-bottom: 2%;
+  }
+}
+
+.btn-primary {
+  min-width: 120px; /* Adjust as needed */
+  max-width: 200px; /* Adjust as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* Initial State */
+  background: transparent;
+  border: 2px solid rgba(63, 94, 251, 1);
+  color: rgba(63, 94, 251, 1);
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+
+  /* Transition */
+  transition-property: background, border, color, box-shadow, transform;
+  transition-duration: 0.4s, 0.4s, 0.4s, 0.4s, 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+  border: none;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Media query to make the image full-width on small screens */
+@media (max-width: 767px) {
+  .card{
+    margin: 0 5%;
+    padding: 0 0 10px 0;
+  }
+  .fixed-size-img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
