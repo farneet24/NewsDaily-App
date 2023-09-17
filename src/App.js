@@ -57,26 +57,35 @@ function App() {
   };
 
   const handleSignup = () => {
-    console.log(FormData);
+  console.log(formData); // Debugging, make sure formData contains what you expect
 
-    fetch("https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/signup/", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === "success") {
-          setIsAuthenticated(true);
-          setFirstName(formData.first_name);
-          localStorage.setItem("isAuthenticated", "true");
-          localStorage.setItem("firstName", formData.first_name);
-          resetFormDataSignUp();
-        }
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
-  };
+  fetch("https://newsdailyfarneet-9e2e933f25bb.herokuapp.com/signup/", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json', // Set Content-Type if sending JSON
+    },
+    body: JSON.stringify(formData), // Stringify the formData object
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok'); // Check response status
+    }
+    return response.json();
+  })
+  .then((data) => {
+    if (data.status === "success") {
+      setIsAuthenticated(true);
+      setFirstName(formData.first_name);
+      localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("firstName", formData.first_name);
+      resetFormDataSignUp();
+    }
+  })
+  .catch((error) => {
+    console.error("There was a problem with the fetch operation:", error);
+  });
+};
+
 
   const handleLogin = () => {
     console.log(formData); // Make sure you've spelled this correctly. JavaScript is case-sensitive.
