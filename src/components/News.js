@@ -13,13 +13,25 @@ const News = ({ country, pageSize, category, apikey, setProgress }) => {
 
   const fetchData = async (pageNum) => {
     setLoading(true);
-    const url = `https://newsapi.org/v2/top-headlines?&category=${category}&apiKey=${apikey}&page=${pageNum}&pagesize=${100}&language=en`;
+    
+    const queryObj = {
+      "$query": {
+        "$and": [
+          { "keyword": category },
+          { "lang": "eng" }
+        ]
+      }
+    };
+  
+    const queryString = encodeURIComponent(JSON.stringify(queryObj));
+    const url = `https://eventregistry.org/api/v1/article/getArticles?query=${queryString}&dataType=news&resultType=articles&articlesPage=${pageNum}&articlesCount=${100}&includeArticleImage=true&includeArticleConcepts=true&articlesSortBy=rel&apiKey=ef5627ca-d6b6-4b3e-8c05-46c5daeb6786`;
+    
     const data = await fetch(url);
     const parsedData = await data.json();
-
-    if (parsedData.articles && Array.isArray(parsedData.articles)) {
-      setArticles((prevArticles) => [...prevArticles, ...parsedData.articles]);
-      setTotalResults(parsedData.totalResults);
+    console.log('The data is like this', data)
+    if (parsedData.articles && Array.isArray(parsedData.articles.results)) {
+      setArticles((prevArticles) => [...prevArticles, ...parsedData.articles.results]);
+      setTotalResults(parsedData.articles.totalResults);
       setPage(pageNum + 1);
       if (!hasFetchedInitialData) {
         setHasFetchedInitialData(true);
@@ -28,10 +40,10 @@ const News = ({ country, pageSize, category, apikey, setProgress }) => {
       console.error("API did not return articles:", parsedData);
       return;
     }
-
+  
     setLoading(false);
   };
-
+  
   useEffect(() => {
     console.log("useEffect running with:", {
       country,
@@ -45,12 +57,19 @@ const News = ({ country, pageSize, category, apikey, setProgress }) => {
       fetchData(1);
     }
   }, [country, hasFetchedInitialData, category, apikey, pageSize]);
+  
+  
 
   const fetchMoreData = () => {
     if (hasFetchedInitialData && articles.length < totalResults) {
       fetchData(page);
     }
   };
+
+  function getFirstSentence(text) {
+    const matches = text.match(/(.*?[.!?])\s/);
+    return (matches && matches[1]) ? matches[1] : text;
+  }
 
   return (
     <>
@@ -73,15 +92,18 @@ const News = ({ country, pageSize, category, apikey, setProgress }) => {
                 <NewsItem
                   title={element.title || "Title Not Available"}
                   description={
-                    element.description || "Description Not Available"
+                    // getFirstSentence(element.body) || "Description Not Available"
+                    element.body || "Description Not Available"
+
                   }
                   ImageURL={
-                    element.urlToImage ||
+                    element.image ||
                     "https://hesolutions.com.pk/wp-content/uploads/2019/01/picture-not-available.jpg"
                   }
                   NewsURL={element.url}
-                  author={element.author}
-                  date={element.publishedAt}
+                  author={element.authors}
+                  date={element.dateTime}
+                  dat={element}
                 />
               </div>
             ))}
