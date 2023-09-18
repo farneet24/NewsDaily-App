@@ -121,11 +121,10 @@ const Recommend = ({ articleText, concepts }) => {
   return (
     <>
       <div id="recommend-container">
-        {hasResults && (
+       
           <h1 className="recommend-heading">
             Curated Insights Based on Article Keywords
           </h1>
-        )}
 
         {keywords.map(
           (keyword, index) =>
