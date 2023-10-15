@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# NewsDaily: Your Personalized News Digest
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Technologies and Tools](#technologies-and-tools)
+- [Security](#security)
+- [Getting Started](#getting-started)
+- [Contributors](#contributors)
 
-## Available Scripts
+## Overview
+NewsDaily is a sophisticated news aggregation and summarization platform designed to deliver personalized news articles directly to your dashboard. The platform utilizes cutting-edge technologies such as Newspaper3k for news extraction and GPT-4 for article summarization.
 
-In the project directory, you can run:
+## Key Features
+- **Automated News Pipeline**: Harnesses Newspaper3k for real-time news extraction from various reputable sources.
+- **Article Summarization**: Utilizes GPT-4 API to produce concise summaries of articles.
+- **Contextual Search**: Integrated Google Custom Search API to generate article-related web links, enhancing user engagement and information access.
+- **Read On-Platform**: Users have the convenience of reading full articles directly within the platform.
 
-### `npm start`
+## Technologies and Tools
+- Newspaper3k for news extraction
+- GPT-4 API for article summarization
+- Google Custom Search API for contextual web links
+- Django for backend development
+- Django's native authentication for user management
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Security
+- Employs Django's native authentication system to provide a secure environment for user data and authentication.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
+To experience NewsDaily's features, visit our live demo [here](https://news-daily-app-farneet.vercel.app/).
 
-### `npm test`
+## Contributors
+For inquiries, suggestions, or contributions, reach out to the project maintainer:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Farneet Singh](mailto:farneetsingh_co21a3_72@dtu.ac.in)
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
