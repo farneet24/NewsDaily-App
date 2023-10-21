@@ -10,6 +10,7 @@ const News = ({ country, pageSize, category, apikey, setProgress }) => {
   const [totalResults, setTotalResults] = useState(0);
   const [loading, setLoading] = useState(false);
   const [hasFetchedInitialData, setHasFetchedInitialData] = useState(false);
+  const newsapi = process.env.REACT_APP_NEWS;
 
   const fetchData = async (pageNum) => {
     setLoading(true);
@@ -24,7 +25,7 @@ const News = ({ country, pageSize, category, apikey, setProgress }) => {
     };
   
     const queryString = encodeURIComponent(JSON.stringify(queryObj));
-    const url = `https://eventregistry.org/api/v1/article/getArticles?query=${queryString}&dataType=news&resultType=articles&articlesPage=${pageNum}&articlesCount=${100}&includeArticleImage=true&includeArticleConcepts=true&articlesSortBy=rel&includeArticleSocialScore=true&includeArticleCategories=true&includeArticleLocation=true&includeArticleVideos=true&includeArticleLinks=true&includeConceptImage=true&apiKey=ef5627ca-d6b6-4b3e-8c05-46c5daeb6786`;
+    const url = `https://eventregistry.org/api/v1/article/getArticles?query=${queryString}&dataType=news&resultType=articles&articlesPage=${pageNum}&articlesCount=${100}&includeArticleImage=true&includeArticleConcepts=true&articlesSortBy=rel&includeArticleSocialScore=true&includeArticleCategories=true&includeArticleLocation=true&includeArticleVideos=true&includeArticleLinks=true&includeConceptImage=true&apiKey=${newsapi}`;
     
     const data = await fetch(url);
     const parsedData = await data.json();
