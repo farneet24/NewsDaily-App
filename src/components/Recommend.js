@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 const OpenAI = require("openai");
 
-// const apiKey = process.env.REACT_APP_OPENAI_API_KEY; // Replace with your OpenAI API key
-const apiKey = process.env.REACT_APP_OPENAI_API_KEY;; // Replace with your OpenAI API key
+const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
 const openai = new OpenAI({ apiKey: apiKey, dangerouslyAllowBrowser: true });
 
 const Recommend = ({ articleText, concepts }) => {
