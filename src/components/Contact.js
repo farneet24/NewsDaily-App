@@ -1,9 +1,11 @@
 import React from "react";
-import axios from "axios";
 import { GrammarlyEditorPlugin } from "@grammarly/editor-sdk-react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Footer from "./Footer";
+import Swal from 'sweetalert2';
+
 
 function Contact() {
   const location = useLocation();
@@ -11,6 +13,9 @@ function Contact() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
+  const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState('');
 
   const [formData, setFormData] = useState({
     name: "",
@@ -20,10 +25,20 @@ function Contact() {
   });
 
   const handleSubmit = (e) => {
+    // Prevent the default behavior of form submission
+    e.preventDefault();
+  
     // Make a POST request to Formspree with the form data
-    axios
-      .post("https://formspree.io/f/mrgvyjrd", formData)
-      .then(() => {
+    fetch("https://formspree.io/f/mrgvyjrd", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
         // Reset the form data
         setFormData({
           name: "",
@@ -31,11 +46,30 @@ function Contact() {
           subject: "",
           message: "",
         });
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your message has been sent.',
+          icon: 'success',
+          confirmButtonText: 'Cool',
+        });
+        // setMessage('Form submitted successfully!');
+        // setMessageType('success');
+        // setTimeout(() => setMessage(null), 5000);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Error:", error);
+        // setMessage('An error occurred. Please try again.');
+        // setMessageType('error');
+        // setTimeout(() => setMessage(null), 5000);
+        Swal.fire({
+          title: 'Error!',
+          text: 'Something went wrong.',
+          icon: 'error',
+          confirmButtonText: 'Retry',
+        });
       });
   };
+  
 
   const handleChange = (e) => {
     setFormData({
@@ -45,7 +79,11 @@ function Contact() {
   };
 
   return (
+    <>
     <div>
+    <br />
+    <br />
+    <br />
     <br />
     <br />
       <div class="content">
@@ -53,7 +91,7 @@ function Contact() {
           <div class="row justify-content-center" id="con">
             <div class="col-md-10">
               <div class="row justify-content-center">
-                <div class={`col-md-6 text-light my-4`}>
+                <div class={`col-md-6 my-4`}>
                   <h3
                     class="heading mb-4 mx-2"
                     style={{ animation: "fadeInUp 1s forwards" }}
@@ -66,7 +104,7 @@ function Contact() {
                   </p>
                   <p>
                     <img
-                      src="https://preview.colorlib.com/theme/bootstrap/contact-form-16/images/undraw-contact.svg"
+                      src="https://ik.imagekit.io/bje8xuiyf/email-marketing-internet-chatting-24-hours-support_335657-3009-removebg-preview.png?updatedAt=1697735307621"
                       alt="formPhoto"
                       class="img-fluid"
                     />
@@ -85,7 +123,7 @@ function Contact() {
                       <div class="col-md-12 form-group my-3">
                         <input
                           type="text"
-                          class={`form-control bg-dark text-light`}
+                          class={`form-control`}
                           name="name"
                           id="name"
                           value={formData.name}
@@ -100,7 +138,7 @@ function Contact() {
                       <div class="col-md-12 form-group my-3">
                         <input
                           type="email"
-                          class={`form-control bg-dark text-light`}
+                          class={`form-control`}
                           name="email"
                           id="email"
                           placeholder="Email"
@@ -116,12 +154,7 @@ function Contact() {
                           <input
                             placeholder="Subject (Optional)"
                             type="text"
-                            className={`form-control bg-dark text-light`}
-                            style={{
-                              "#subject::placeholder": {
-                                color: "white",
-                              },
-                            }}
+                            className={`form-control`}
                             name="subject"
                             id="subject"
                             value={formData.subject}
@@ -135,7 +168,7 @@ function Contact() {
                       <div class="col-md-12 form-group my-3">
                         <GrammarlyEditorPlugin clientId="client_BjCz9ioNF9BuopLyuwyCkC">
                           <textarea
-                            class={`form-control bg-dark text-light`}
+                            class={`form-control`}
                             name="message"
                             id="message"
                             cols="30"
@@ -158,6 +191,7 @@ function Contact() {
                       </div>
                     </div>
                   </form>
+                  {/* {message && <div className={`alert alert-${messageType}`}>{message}</div>} */}
                 </div>
               </div>
             </div>
@@ -171,6 +205,10 @@ function Contact() {
       <script src="js/jquery.validate.min.js"></script>
       <script src="js/main.js"></script>
     </div>
+    <br />
+    <br />
+    <Footer />
+    </>
   );
 }
 

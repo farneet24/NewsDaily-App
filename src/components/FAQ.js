@@ -41,22 +41,22 @@ const FAQ = () => {
       <div class="accordion-new">
         <div class="accordion-new-item">
           <button id="accordion-new-button-1" aria-expanded="false">
-            <span class="accordion-new-title">
+            <strong class="accordion-new-title">
               How do I get started with NewsDaily?
-            </span>
+            </strong>
             <span class="icon" aria-hidden="true"></span>
           </button>
           <div class="accordion-new-content">
             <p>
-            Once logged in, you can toggle between the news feed by selecting categories of interest such as Technology, Business, or Sports. Click the 'Read Article' button to delve into content that catches your eye. Each article is equipped with features like summarization, keywords, and context-enriched links to provide a rich and insightful reading experience.
+            Once logged in, you can toggle between the news feed by selecting categories of interest such as Technology, Business, or Sports. Click the 'Read More' button to delve into content that catches your eye. Each article is equipped with features like summarization, keywords, and context-enriched links to provide a rich and insightful reading experience.
             </p>
           </div>
         </div>
         <div class="accordion-new-item">
           <button id="accordion-new-button-2" aria-expanded="false">
-            <span class="accordion-new-title">
+            <strong class="accordion-new-title">
             How accurate is the article summary provided?
-            </span>
+            </strong>
             <span class="icon" aria-hidden="true"></span>
           </button>
           <div class="accordion-new-content">
@@ -67,9 +67,9 @@ const FAQ = () => {
         </div>
         <div class="accordion-new-item">
           <button id="accordion-new-button-3" aria-expanded="false">
-            <span class="accordion-new-title">
+            <strong class="accordion-new-title">
             Why am I seeing suggested external links with my search results?
-            </span>
+            </strong>
             <span class="icon" aria-hidden="true"></span>
           </button>
           <div class="accordion-new-content">
@@ -80,9 +80,9 @@ const FAQ = () => {
         </div>
         <div class="accordion-new-item">
           <button id="accordion-new-button-4" aria-expanded="false">
-            <span class="accordion-new-title">
+            <strong class="accordion-new-title">
             How do I report a bug or issue?
-            </span>
+            </strong>
             <span class="icon" aria-hidden="true"></span>
           </button>
           <div class="accordion-new-content">

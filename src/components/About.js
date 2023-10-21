@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import FAQ from "./FAQ";
 import Tech from "./Technologies";
+import Footer from "./Footer";
 
 const TabContainer = styled.div`
   width: 100%;
@@ -67,8 +68,8 @@ function About(props) {
   }, [location]);
 
   let tabcontentStyle = {
-    color: "#EAEAEA",
-    backgroundColor: "#1E1E1E",
+    color: "#1E1E1E",
+    backgroundColor: "#F1EFEF",
   };
 
   const [activeTab, setActiveTab] = useState(0);
@@ -77,7 +78,10 @@ function About(props) {
       title: "Secure Access",
       content: (
         <>
-          With a strong emphasis on data security and user privacy, NewsDaily incorporates a secure authentication framework. This ensures the integrity and confidentiality of user-specific information and preferences.
+          With a strong emphasis on data security and user privacy, NewsDaily
+          incorporates a secure authentication framework. This ensures the
+          integrity and confidentiality of user-specific information and
+          preferences.
           <br />
         </>
       ),
@@ -86,7 +90,10 @@ function About(props) {
       title: "Real-time Article",
       content: (
         <>
-          By interfacing with NewsAPI, NewsDaily ensures real-time access to a diverse range of news articles from reputable sources. This feature amplifies the platform’s capability to provide a comprehensive and up-to-date overview of current events.
+          By interfacing with NewsAPI, NewsDaily ensures real-time access to a
+          diverse range of news articles from reputable sources. This feature
+          amplifies the platform’s capability to provide a comprehensive and
+          up-to-date overview of current events.
           <br />
           {/* <img src="https://images.theconversation.com/files/191827/original/file-20171025-25516-g7rtyl.jpg?ixlib=rb-1.1.0&rect=0%2C70%2C7875%2C5667&q=45&auto=format&w=926&fit=clip" alt="Description" /> */}
         </>
@@ -96,7 +103,11 @@ function About(props) {
       title: "Context-Enriched Search",
       content: (
         <>
-          Integrating Custom Google Search API, NewsDaily augments extracted article keywords to fetch relevant external resources automatically. This enables users to deepen their understanding of subjects mentioned in the article without manual searches, thereby saving time and effort.
+          Integrating Custom Google Search API, NewsDaily augments extracted
+          article keywords to fetch relevant external resources automatically.
+          This enables users to deepen their understanding of subjects mentioned
+          in the article without manual searches, thereby saving time and
+          effort.
           <br />
           {/* <img src="https://images.theconversation.com/files/191827/original/file-20171025-25516-g7rtyl.jpg?ixlib=rb-1.1.0&rect=0%2C70%2C7875%2C5667&q=45&auto=format&w=926&fit=clip" alt="Description" /> */}
         </>
@@ -106,7 +117,10 @@ function About(props) {
       title: "Context-Aware Summaries",
       content: (
         <>
-          Employing GPT-4's advanced natural language processing capabilities, NewsDaily autonomously distills comprehensive news articles into concise summaries. This facilitates rapid comprehension and enhances user engagement.
+          Employing GPT-4's advanced natural language processing capabilities,
+          NewsDaily autonomously distills comprehensive news articles into
+          concise summaries. This facilitates rapid comprehension and enhances
+          user engagement.
           <br />
         </>
       ),
@@ -114,6 +128,7 @@ function About(props) {
   ];
 
   return (
+    <>
     <div className="column boc">
       <br />
       <br />
@@ -121,7 +136,6 @@ function About(props) {
       <h1
         className="my-3 text-center"
         style={{
-          color: "white",
           animation: "fadeInUp 1s forwards",
         }}
       >
@@ -131,21 +145,16 @@ function About(props) {
       <br />
       <div className="vertical-section">
         <p className="lead">
-          We are your go-to platform for personalized, in-depth news consumption
-          tailored to your interests. With NewsDaily, you are not just a reader
-          but an empowered user.
+          Introducing NewsDaily: The preferred platform for curated,
+          personalized news content aligned with individual preferences. Here,
+          engagement transcends traditional reading to foster empowered
+          interaction with information.
           <br />
           <br />
-          At NewsDaily, we understand the overwhelming nature of today’s news
-          ecosystem, which is why we have developed a range of features designed
-          to enhance your news-reading experience.
+          NewsDaily recognizes the complexities of today's news landscape. To
+          address this, a suite of specialized features aims to optimize the
+          user's news consumption experience.
         </p>
-        {/* <img
-          className="img-fluid"
-          src="https://cdn.questionpro.com/userimages/site_media/text-analysis.png"
-          alt="Text Analysis"
-          height="4px"
-        /> */}
       </div>
       <br />
       <br />
@@ -153,7 +162,6 @@ function About(props) {
       <h1
         className="text-center"
         style={{
-          color: "white",
           animation: "fadeInUp 1s forwards",
         }}
       >
@@ -192,7 +200,6 @@ function About(props) {
       <h1
         className="my-3 text-center"
         style={{
-          color: "white",
           animation: "fadeInUp 1s forwards",
         }}
       >
@@ -204,20 +211,26 @@ function About(props) {
       <br />
       <br />
       <br />
+      <br />
       <h1
         className="text-center"
         style={{
-          color: "white",
           animation: "fadeInUp 1s forwards",
         }}
       >
         Frequently Asked Questions (FAQs)
       </h1>
       <br />
+      <br />
       <FAQ />
       <br />
       <br />
+      <br />
+      <br />
+      <br />
     </div>
+      <Footer />
+    </>
   );
 }
 

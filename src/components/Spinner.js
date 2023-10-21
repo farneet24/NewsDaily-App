@@ -1,5 +1,5 @@
 import React from 'react';
-import loading from './Ellipsis-1s-200px.gif';
+import loading from './loading1.gif';
 
 const Spinner = () => {
   return (

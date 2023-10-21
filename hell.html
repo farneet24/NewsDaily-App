@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="hell.css" />
+    <title>NewsDaily Article</title>
+    <script>
+      function changeFontSize() {
+        const size = document.getElementById("font-size").value;
+        const article = document.getElementById("article-content");
+        article.style.fontSize = size + "px";
+      }
+
+      function toggleBgColor() {
+        const article = document.getElementById("article-content");
+        article.classList.toggle("bg-gray-100");
+      }
+
+      function toggleReadMode() {
+        const article = document.getElementById("article-content");
+        article.classList.toggle("text-white");
+        article.classList.toggle("bg-black");
+      }
+
+      function changeLineHeight() {
+        const height = document.getElementById("line-height").value;
+        const article = document.getElementById("article-content");
+        article.style.lineHeight = height;
+      }
+
+      function changeTextColor() {
+        const color = document.getElementById("text-color").value;
+        const article = document.getElementById("article-content");
+        article.style.color = color;
+      }
+
+      function changeTextTransform(transform) {
+        const article = document.getElementById("article-content");
+        article.style.textTransform = transform;
+      }
+
+      function changeFontFamily() {
+        const fontFamily = document.getElementById("font-family").value;
+        const article = document.getElementById("article-content");
+        article.style.fontFamily = fontFamily;
+      }
+    </script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+      <div class="bg-white rounded-lg p-4">
+        <img
+          class="w-full object-cover h-48 mb-6"
+          src="https://static01.nyt.com/images/2023/09/22/multimedia/00dc-milley-new-01-fmvp/00dc-milley-new-01-fmvp-videoSixteenByNineJumbo1600.jpg"
+          alt="Dollar General Image"
+        />
+        <header class="relative mb-6">
+          <div class="eleven">
+            <h1>
+              Dollar General: Short-Term Headwinds Could Be Indicative Of Deeper
+              Issues
+            </h1>
+            <span class="text-gray-500 text-sm newsart"
+              >Example Tagline Text</span
+            >
+          </div>
+        </header>
+      </div>
+
+      <div class="bg-white shadow-xl rounded-lg overflow-hidden p-6">
+        <!-- Content Section -->
+
+        <!-- Interactive Features -->
+        <div class="flex flex-wrap gap-4 mb-6">
+          <select
+            id="font-size"
+            onchange="changeFontSize()"
+            class="bg-gray-300 text-gray-800 py-2 px-4 rounded"
+          >
+            <option value="16">Default Font Size</option>
+            <option value="18">Large Font Size</option>
+            <option value="20">XL Font Size</option>
+            <option value="22">2XL Font Size</option>
+          </select>
+
+          <select
+            id="font-family"
+            onchange="changeFontFamily(this.value)"
+            class="bg-gray-300 text-gray-800 py-2 px-4 rounded"
+          >
+          <option value="Andale Mono" style="font-family: 'Andale Mono';">Andale Mono</option>
+        <option value="Arial Black" style="font-family: 'Arial Black';">Arial Black</option>
+        <option value="Arial Narrow" style="font-family: 'Arial Narrow';">Arial Narrow</option>
+        <option value="Baskerville" style="font-family: Baskerville;">Baskerville</option>
+        <option value="Berlin Sans FB" style="font-family: 'Berlin Sans FB';">Berlin Sans FB</option>
+        <option value="Bernard MT Condensed" style="font-family: 'Bernard MT Condensed';">Bernard MT Condensed</option>
+        <option value="Big Caslon" style="font-family: 'Big Caslon';">Big Caslon</option>
+        <option value="Bodoni MT" style="font-family: 'Bodoni MT';">Bodoni MT</option>
+        <option value="Book Antiqua" style="font-family: 'Book Antiqua';">Book Antiqua</option>
+        <option value="Bookman Old Style" style="font-family: 'Bookman Old Style';">Bookman Old Style</option>
+        <option value="Bradley Hand" style="font-family: 'Bradley Hand';">Bradley Hand</option>
+        <option value="Britannic Bold" style="font-family: 'Britannic Bold';">Britannic Bold</option>
+        <option value="Brush Script MT" style="font-family: 'Brush Script MT';">Brush Script MT</option>
+        <option value="Calibri" style="font-family: Calibri;">Calibri</option>
+        <option value="Calisto MT" style="font-family: 'Calisto MT';">Calisto MT</option>
+        <option value="Cambria" style="font-family: Cambria;">Cambria</option>
+        <option value="Candara" style="font-family: Candara;">Candara</option>
+        <option value="Castellar" style="font-family: Castellar;">Castellar</option>
+        <option value="Century Gothic" style="font-family: 'Century Gothic';">Century Gothic</option>
+        <option value="Century Schoolbook" style="font-family: 'Century Schoolbook';">Century Schoolbook</option>
+        <option value="Chiller" style="font-family: Chiller;">Chiller</option>
+        <option value="Colonna MT" style="font-family: 'Colonna MT';">Colonna MT</option>
+        <option value="Consolas" style="font-family: Consolas;">Consolas</option>
+        <option value="Cooper Black" style="font-family: 'Cooper Black';">Cooper Black</option>
+        <option value="Copperplate Gothic" style="font-family: 'Copperplate Gothic';">Copperplate Gothic</option>
+        <option value="Corbel" style="font-family: Corbel;">Corbel</option>
+        <option value="Courier" style="font-family: Courier;">Courier</option>
+        <option value="Curlz MT" style="font-family: 'Curlz MT';">Curlz MT</option>
+        <option value="Didot" style="font-family: Didot;">Didot</option>
+        <option value="DIN Alternate" style="font-family: 'DIN Alternate';">DIN Alternate</option>
+        <option value="DIN Condensed" style="font-family: 'DIN Condensed';">DIN Condensed</option>
+        <option value="Edwardian Script ITC" style="font-family: 'Edwardian Script ITC';">Edwardian Script ITC</option>
+        <option value="Elephant" style="font-family: Elephant;">Elephant</option>
+        <option value="Engravers MT" style="font-family: 'Engravers MT';">Engravers MT</option>
+        <option value="Eras Bold ITC" style="font-family: 'Eras Bold ITC';">Eras Bold ITC</option>
+        <option value="Eras Medium ITC" style="font-family: 'Eras Medium ITC';">Eras Medium ITC</option>
+        <option value="Felix Titling" style="font-family: 'Felix Titling';">Felix Titling</option>
+        <option value="Footlight MT Light" style="font-family: 'Footlight MT Light';">Footlight MT Light</option>
+        <option value="Franklin Gothic Book" style="font-family: 'Franklin Gothic Book';">Franklin Gothic Book</option>
+        <option value="Franklin Gothic Medium" style="font-family: 'Franklin Gothic Medium';">Franklin Gothic Medium</option>
+        <option value="Futura" style="font-family: Futura;">Futura</option>
+        <option value="Gentium" style="font-family: Gentium;">Gentium</option>
+        <option value="Gill Sans" style="font-family: 'Gill Sans';">Gill Sans</option>
+        <option value="Goudy Old Style" style="font-family: 'Goudy Old Style';">Goudy Old Style</option>
+        <option value="Haettenschweiler" style="font-family: Haettenschweiler;">Haettenschweiler</option>
+        <option value="Helvetica" style="font-family: Helvetica;">Helvetica</option>
+        <option value="Helvetica Neue" style="font-family: 'Helvetica Neue';">Helvetica Neue</option>
+        <option value="Herculanum" style="font-family: Herculanum;">Herculanum</option>
+        <option value="Hoefler Text" style="font-family: 'Hoefler Text';">Hoefler Text</option>
+        <option value="Impact" style="font-family: Impact;">Impact</option>
+        <option value="Inconsolata" style="font-family: Inconsolata;">Inconsolata</option>
+        <option value="Informal Roman" style="font-family: 'Informal Roman';">Informal Roman</option>
+        <option value="Ink Free" style="font-family: 'Ink Free';">Ink Free</option>
+        <option value="Jokerman" style="font-family: Jokerman;">Jokerman</option>
+        <option value="Juice ITC" style="font-family: 'Juice ITC';">Juice ITC</option>
+        <option value="Kristen ITC" style="font-family: 'Kristen ITC';">Kristen ITC</option>
+        <option value="Kunstler Script" style="font-family: 'Kunstler Script';">Kunstler Script</option>
+        <option value="Lato" style="font-family: Lato;">Lato</option>
+        <option value="Lucida Bright" style="font-family: 'Lucida Bright';">Lucida Bright</option>
+        <option value="Lucida Calligraphy" style="font-family: 'Lucida Calligraphy';">Lucida Calligraphy</option>
+        <option value="Lucida Console" style="font-family: 'Lucida Console';">Lucida Console</option>
+        <option value="Lucida Fax" style="font-family: 'Lucida Fax';">Lucida Fax</option>
+        <option value="Lucida Handwriting" style="font-family: 'Lucida Handwriting';">Lucida Handwriting</option>
+        <option value="Lucida Sans Typewriter" style="font-family: 'Lucida Sans Typewriter';">Lucida Sans Typewriter</option>
+        <option value="Lucida Sans Unicode" style="font-family: 'Lucida Sans Unicode';">Lucida Sans Unicode</option>
+        <option value="Magneto" style="font-family: Magneto;">Magneto</option>
+        <option value="Maiandra GD" style="font-family: 'Maiandra GD';">Maiandra GD</option>
+        <option value="Matura MT Script Capitals" style="font-family: 'Matura MT Script Capitals';">Matura MT Script Capitals</option>
+        <option value="Merriweather" style="font-family: Merriweather;">Merriweather</option>
+        <option value="Mistral" style="font-family: Mistral;">Mistral</option>
+        <option value="Modern No. 20" style="font-family: 'Modern No. 20';">Modern No. 20</option>
+        <option value="Monaco" style="font-family: Monaco;">Monaco</option>
+        <option value="Monospace" style="font-family: Monospace;">Monospace</option>
+        <option value="MS Gothic" style="font-family: 'MS Gothic';">MS Gothic</option>
+        <option value="MS Outlook" style="font-family: 'MS Outlook';">MS Outlook</option>
+        <option value="MS Reference Sans Serif" style="font-family: 'MS Reference Sans Serif';">MS Reference Sans Serif</option>
+        <option value="MS Sans Serif" style="font-family: 'MS Sans Serif';">MS Sans Serif</option>
+        <option value="MS Serif" style="font-family: 'MS Serif';">MS Serif</option>
+        <option value="MT Extra" style="font-family: 'MT Extra';">MT Extra</option>
+        <option value="MV Boli" style="font-family: 'MV Boli';">MV Boli</option>
+        <option value="Myanmar Text" style="font-family: 'Myanmar Text';">Myanmar Text</option>
+        <option value="Nanum Gothic" style="font-family: 'Nanum Gothic';">Nanum Gothic</option>
+        <option value="Nanum Myeongjo" style="font-family: 'Nanum Myeongjo';">Nanum Myeongjo</option>
+        <option value="Noto Sans" style="font-family: 'Noto Sans';">Noto Sans</option>
+        <option value="Noto Serif" style="font-family: 'Noto Serif';">Noto Serif</option>
+        <option value="OCR A Extended" style="font-family: 'OCR A Extended';">OCR A Extended</option>
+        <option value="Old English Text MT" style="font-family: 'Old English Text MT';">Old English Text MT</option>
+        <option value="Open Sans" style="font-family: 'Open Sans';">Open Sans</option>
+        <option value="Optima" style="font-family: Optima;">Optima</option>
+        <option value="Orator Std" style="font-family: 'Orator Std';">Orator Std</option>
+        <option value="Palatino" style="font-family: Palatino;">Palatino</option>
+        <option value="Papyrus" style="font-family: Papyrus;">Papyrus</option>
+        <option value="Perpetua" style="font-family: Perpetua;">Perpetua</option>
+        <option value="Playbill" style="font-family: Playbill;">Playbill</option>
+        <option value="Playfair Display" style="font-family: 'Playfair Display';">Playfair Display</option>
+        <option value="Poiret One" style="font-family: 'Poiret One';">Poiret One</option>
+        <option value="Poor Richard" style="font-family: 'Poor Richard';">Poor Richard</option>
+        <option value="Pristina" style="font-family: Pristina;">Pristina</option>
+        <option value="PT Sans" style="font-family: 'PT Sans';">PT Sans</option>
+        <option value="PT Serif" style="font-family: 'PT Serif';">PT Serif</option>
+        <option value="Quicksand" style="font-family: Quicksand;">Quicksand</option>
+        <option value="Raleway" style="font-family: Raleway;">Raleway</option>
+        <option value="Rockwell" style="font-family: Rockwell;">Rockwell</option>
+        <option value="Roboto" style="font-family: Roboto;">Roboto</option>
+        <option value="Roboto Condensed" style="font-family: 'Roboto Condensed';">Roboto Condensed</option>
+        <option value="Roboto Slab" style="font-family: 'Roboto Slab';">Roboto Slab</option>
+        <option value="Segoe Print" style="font-family: 'Segoe Print';">Segoe Print</option>
+        <option value="Segoe Script" style="font-family: 'Segoe Script';">Segoe Script</option>
+        <option value="Segoe UI" style="font-family: 'Segoe UI';">Segoe UI</option>
+        <option value="Showcard Gothic" style="font-family: 'Showcard Gothic';">Showcard Gothic</option>
+        <option value="SimSun" style="font-family: SimSun;">SimSun</option>
+        <option value="Sitka Text" style="font-family: 'Sitka Text';">Sitka Text</option>
+        <option value="Sylfaen" style="font-family: Sylfaen;">Sylfaen</option>
+        <option value="Symbol" style="font-family: Symbol;">Symbol</option>
+        <option value="Tahoma" style="font-family: Tahoma;">Tahoma</option>
+        <option value="Tekton Pro" style="font-family: 'Tekton Pro';">Tekton Pro</option>
+        <option value="Times" style="font-family: Times;">Times</option>
+        <option value="Trebuchet MS" style="font-family: 'Trebuchet MS';">Trebuchet MS</option>
+        <option value="Verdana" style="font-family: Verdana;">Verdana</option>
+        <option value="Vivaldi" style="font-family: Vivaldi;">Vivaldi</option>
+        <option value="Vladimir Script" style="font-family: 'Vladimir Script';">Vladimir Script</option>
+        <option value="Webdings" style="font-family: Webdings;">Webdings</option>
+        <option value="Wingdings" style="font-family: Wingdings;">Wingdings</option>
+        <option value="Yu Gothic" style="font-family: 'Yu Gothic';">Yu Gothic</option>
+        <option value="Yu Mincho" style="font-family: 'Yu Mincho';">Yu Mincho</option>
+        <option value="Zapf Dingbats" style="font-family: 'Zapf Dingbats';">Zapf Dingbats</option>
+        <option value="Zapfino" style="font-family: Zapfino;">Zapfino</option>
+
+          </select>
+
+          <button
+            onclick="toggleBgColor()"
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded"
+          >
+            Toggle Background
+          </button>
+          <button
+            onclick="toggleReadMode()"
+            class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded"
+          >
+            Read Mode
+          </button>
+          <select id="line-height" onchange="changeLineHeight()">
+            <option value="1">1</option>
+            <option value="1.2">1.2</option>
+            <option value="1.4">1.4</option>
+            <option value="1.6">1.6</option>
+            <option value="1.8">1.8</option>
+            <option value="2">2</option>
+            <option value="2.2">2.2</option>
+            <option value="2.4">2.4</option>
+            <option value="2.6">2.6</option>
+            <option value="2.8">2.8</option>
+          </select>
+
+          <select
+            id="text-color"
+            onchange="changeTextColor(this.value)"
+            class="bg-gray-300 text-gray-800 py-2 px-4 rounded"
+          >
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="purple">Purple</option>
+          <option value="orange">Orange</option>
+          <option value="black">Black</option>
+          <option value="brown">Brown</option>
+          <option value="pink">Pink</option>
+          <option value="gray">Gray</option>
+          </select>
+
+          <select
+            id="text-transform"
+            onchange="changeTextTransform(this.value)"
+            class="bg-gray-300 text-gray-800 py-2 px-4 rounded"
+          >
+            <option value="none">None</option>
+            <option value="capitalize">Capitalize</option>
+            <option value="lowercase">Lowercase</option>
+            <option value="uppercase">Uppercase</option>
+          </select>
+        </div>
+
+        <div
+          id="article-content"
+          class="prose prose-lg text-base bg-white text-gray-900"
+        >
+          <p class="leading-relaxed" style="line-height: 1.6; font-size: 16px">
+            Dollar General's expanded product offerings can likely work at its rural locations, and may help to offset slowing growth, but the company may be running into issues.<br>
+
+As pretty much everyone knows, Dollar General (NYSE:DG) has been beaten down recently. Its stock price has fallen over 50% YTD, and just keeps dropping after every poor quarter. Today, the company is trading for ~11x 2022's diluted EPS and roughly 16x the low end of their 2023 FY EPS guidance.<br>
+
+The company is experiencing a lot of issues right now (which we will discuss briefly below), but honestly I think a lot of these are short-term operational issues. They may not be - this may be a symptom of something worse. Management can't really execute right now, and it looks like they overinvested in inventory in 2022 (but who didn't).<br>
+
+What you really have to decide, though, is whether they can maintain their past growth rate once they get all of this figured out. Right now, they're guiding for revenue growth of 1%-3% for FY 2023, and a significant decrease in margins and EPS. Is this a sign of a sustained trend?<br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
