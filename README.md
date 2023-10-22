@@ -3,6 +3,7 @@
 ## Table of Contents
 - [Overview](#overview)
 - [Key Features](#key-features)
+- [Future Prospects](#future-prospects)
 - [Technologies and Tools](#technologies-and-tools)
 - [Security](#security)
 - [Getting Started](#getting-started)
@@ -12,17 +13,23 @@
 NewsDaily is a sophisticated news aggregation and summarization platform designed to deliver personalized news articles directly to your dashboard. The platform utilizes cutting-edge technologies such as Newspaper3k for news extraction and GPT-4 for article summarization.
 
 ## Key Features
-- **Automated News Pipeline**: Harnesses Newspaper3k for real-time news extraction from various reputable sources.
-- **Article Summarization**: Utilizes GPT-4 API to produce concise summaries of articles.
-- **Contextual Search**: Integrated Google Custom Search API to generate article-related web links, enhancing user engagement and information access.
-- **Read On-Platform**: Users have the convenience of reading full articles directly within the platform.
+- **Automated News Pipeline**: Utilizes Newspaper3k for seamless, real-time extraction of news from a variety of reputable sources.
+- **Article Summarization**: Leverages the power of GPT-4 API to produce concise and coherent summaries of articles.
+- **Contextual Search**: Incorporates Google Custom Search API to surface relevant web links related to the article, thereby enriching user engagement and broadening access to information.
+- **Read On-Platform**: Offers users the convenience of reading entire articles directly on the platform, thereby negating the need to navigate away.
+
+## Future Prospects
+1. **Data Analytics Dashboard**: Plans to integrate analytics features that will present data on user behavior within their respective profiles.
+2. **Bookmark Functionality**: Upcoming support for bookmarking articles for later reading.
+3. **Personalized Recommendations**: A recommendation system is in the pipeline to further tailor the user experience.
 
 ## Technologies and Tools
-- Newspaper3k for news extraction
-- GPT-4 API for article summarization
-- Google Custom Search API for contextual web links
-- Django for backend development
-- Django's native authentication for user management
+- Newspaper3k for News Extraction
+- GPT-4 API for Article Summarization
+- Google Custom Search API
+- Django for Backend Development
+- Django's Native Authentication for User Management
+- MaterialUI, Bootstrap, and Tailwind CSS for UI/UX Design
 
 ## Security
 - Employs Django's native authentication system to provide a secure environment for user data and authentication.
