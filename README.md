@@ -38,4 +38,4 @@ NewsDaily is a sophisticated news aggregation and summarization platform designe
 To experience NewsDaily's features, visit our live demo [here](https://news-daily-swart.vercel.app/).
 
 ## Contributors
-For inquiries, suggestions, or contributions, reach out to the project maintainer: [Farneet Singh](mailto:farneetsingh_co21a3_72@dtu.ac.in). You can also checkout the backend [code](https://github.com/farneet24/NewsDaily-App-Backend).
+For inquiries, suggestions, or contributions, you can mail me: [Farneet Singh](mailto:farneetsingh_co21a3_72@dtu.ac.in) or connect with me through [LinkedIn](https://www.linkedin.com/in/farneet-singh-6b155b208/). You can also checkout the backend [code](https://github.com/farneet24/NewsDaily-App-Backend). Thank you :)
