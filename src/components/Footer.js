@@ -174,7 +174,7 @@ function Footer() {
                       <i className="fab fa-github"></i>
                     </a>
                     <a
-                      href="https://www.instagram.com/farneet.singh/"
+                      href="https://www.instagram.com/farneetsingh7/"
                       target="_blank"
                     >
                       <i className="fab fa-instagram"></i>
