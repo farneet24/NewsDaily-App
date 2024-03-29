@@ -10,7 +10,9 @@
 - [Contributors](#contributors)
 
 ## Overview
-NewsDaily is a sophisticated news aggregation and summarization platform designed to deliver personalized news articles directly to your dashboard. The platform utilizes cutting-edge technologies such as Newspaper3k for news extraction and GPT-4 for article summarization. To further enhance the accuracy of the summarization, I explored the use of **Generative Adversarial Networks (GANs)**. GANs generate synthetic news articles, providing a mixed testing ground for refining and adapting the GPT-4 to effectively handle a wide array of news content.
+NewsDaily is a sophisticated news aggregation and summarization platform designed to deliver personalized news articles directly to your dashboard. The platform utilizes cutting-edge technologies such as Newspaper3k for news extraction and GPT-4 for article summarization. 
+
+To further enhance the accuracy of the summarization, I explored the use of **Generative Adversarial Networks (GANs)**. GANs generate synthetic news articles, providing a mixed testing ground for refining and adapting the GPT-4 to effectively handle a wide array of news content.
 
 ## Key Features
 - **Automated News Pipeline**: The pipeline utilizes Newspaper3k for seamless, real-time extraction of news from a variety of reputable sources.
